@@ -1,11 +1,11 @@
-# http-request-prabhat
+# axios-swr-react
 
 A utility package for making HTTP requests with axios and SWR.
 
 ## Installation
 
 ```sh
-npm install http-request-prabhat
+npm install axios-swr-react
 
 import { useData, get, post, put, del } from 'http-request-package';
 
