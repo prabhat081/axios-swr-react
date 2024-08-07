@@ -1,4 +1,4 @@
-# http-request-package
+# http-request-prabhat
 
 A utility package for making HTTP requests with axios and SWR.
 

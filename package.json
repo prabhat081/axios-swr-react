@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/http-request-package.git"
+    "url": "git+https://github.com/prabhat081/http-request-prabhat.git"
   },
   "keywords": [
     "http",
@@ -19,12 +19,12 @@
     "react",
     "typescript"
   ],
-  "author": "Your Name",
+  "author": "Prabhat Kumar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourusername/http-request-package/issues"
+    "url": "https://github.com/prabhat081/http-request-package/issues"
   },
-  "homepage": "https://github.com/yourusername/http-request-package#readme",
+  "homepage": "https://github.com/prabhat081/http-request-package#readme",
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "swr": "^1.1.0"
