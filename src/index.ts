@@ -1,1 +1,1 @@
-export * from './http-request-prabhat';
+export * from './axios-swr-react';
