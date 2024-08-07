@@ -7,7 +7,7 @@ A utility package for making HTTP requests with axios and SWR.
 ```sh
 npm install axios-swr-react
 
-import { useData, get, post, put, del } from 'http-request-package';
+import { useData, get, post, put, del } from 'axios-swr-react';
 
 // Usage examples in a React component
 
