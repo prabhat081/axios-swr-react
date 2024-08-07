@@ -1,5 +1,5 @@
 {
-  "name": "http-request-prabhat",
+  "name": "axios-swr-react",
   "version": "1.0.0",
   "description": "A utility package for making HTTP requests with axios and SWR",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prabhat081/http-request-prabhat.git"
+    "url": "git+https://github.com/prabhat081/axios-swr-react.git"
   },
   "keywords": [
     "http",
@@ -22,9 +22,9 @@
   "author": "Prabhat Kumar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/prabhat081/http-request-package/issues"
+    "url": "https://github.com/prabhat081/axios-swr-reacte/issues"
   },
-  "homepage": "https://github.com/prabhat081/http-request-package#readme",
+  "homepage": "https://github.com/prabhat081axios-swr-react#readme",
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "swr": "^1.1.0"
