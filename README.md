@@ -100,32 +100,27 @@ const deleteData = async () => {
 ```
 
 ### Mutation Example
-
-You can use the `mutate` function from SWR to revalidate the data after making a POST, PUT, or DELETE request.
+You can use the `mutate` function from SWR to revalidate the data after making a POST, PUT, or DELETE request. The reusable functions for different HTTP methods support automatic mutation.
 
 ```jsx
 import React from 'react';
 import { useData, post, put, del } from 'axios-swr-react';
-import { mutate } from 'swr';
 
 const MyComponent = () => {
   const { data, isLoading, isError } = useData('/api/data');
 
   const handleAddData = async () => {
     const newData = { key: 'value' };
-    await post('/api/data', newData);
-    mutate('/api/data'); // Revalidate the data after the POST request
+    await post('/api/data', newData, {}, '/api/data'); // Revalidate the data after the POST request
   };
 
   const handleUpdateData = async () => {
     const updatedData = { key: 'newValue' };
-    await put('/api/data/1', updatedData);
-    mutate('/api/data'); // Revalidate the data after the PUT request
+    await put('/api/data/1', updatedData, {}, '/api/data'); // Revalidate the data after the PUT request
   };
 
   const handleDeleteData = async () => {
-    await del('/api/data/1');
-    mutate('/api/data'); // Revalidate the data after the DELETE request
+    await del('/api/data/1', {}, '/api/data'); // Revalidate the data after the DELETE request
   };
 
   if (isLoading) return <div>Loading...</div>;
