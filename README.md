@@ -11,15 +11,130 @@ import { useData, get, post, put, del } from 'axios-swr-react';
 
 // Usage examples in a React component
 
-const MyComponent = () => {
-  const { data, isLoading, isError } = useData('https://jsonplaceholder.typicode.com/posts/1');
+useData Hook
+The useData hook is used to fetch data with SWR and axios. It provides data, isLoading, and isError states.
 
-  // Define functions for get, post, put, and delete requests
-  // ...
+import React from 'react';
+import { useData } from 'your-package-name';
+
+const MyComponent = () => {
+  const { data, isLoading, isError } = useData('/api/data');
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading data</div>;
 
   return (
-    // JSX for the component
+    <div>
+      <h1>Data:</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
   );
 };
+
+
+HTTP Methods
+The package provides reusable functions for get, post, put, and delete HTTP methods.
+
+GET Request
+
+import { get } from 'your-package-name';
+
+const fetchData = async () => {
+  try {
+    const data = await get('/api/data');
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data', error);
+  }
+};
+
+POST Request
+
+import { post } from 'your-package-name';
+
+const sendData = async () => {
+  try {
+    const data = { key: 'value' };
+    const response = await post('/api/data', data);
+    console.log(response);
+  } catch (error) {
+    console.error('Error sending data', error);
+  }
+};
+
+
+PUT Request
+
+import { put } from 'your-package-name';
+
+const updateData = async () => {
+  try {
+    const data = { key: 'newValue' };
+    const response = await put('/api/data', data);
+    console.log(response);
+  } catch (error) {
+    console.error('Error updating data', error);
+  }
+};
+
+
+DELETE Request
+
+import { del } from 'your-package-name';
+
+const deleteData = async () => {
+  try {
+    const response = await del('/api/data');
+    console.log(response);
+  } catch (error) {
+    console.error('Error deleting data', error);
+  }
+};
+
+
+Mutation Example
+You can use the mutate function from SWR to revalidate the data after making a POST, PUT, or DELETE request.
+
+import React from 'react';
+import { useData, post, put, del } from 'your-package-name';
+import { mutate } from 'swr';
+
+const MyComponent = () => {
+  const { data, isLoading, isError } = useData('/api/data');
+
+  const handleAddData = async () => {
+    const newData = { key: 'value' };
+    await post('/api/data', newData, undefined, '/api/data');
+    mutate('/api/data'); // Revalidate the data after the POST request
+  };
+
+  const handleUpdateData = async () => {
+    const updatedData = { key: 'newValue' };
+    await put('/api/data/1', updatedData, undefined, '/api/data');
+    mutate('/api/data'); // Revalidate the data after the PUT request
+  };
+
+  const handleDeleteData = async () => {
+    await del('/api/data/1', undefined, '/api/data');
+    mutate('/api/data'); // Revalidate the data after the DELETE request
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading data</div>;
+
+  return (
+    <div>
+      <h1>Data:</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <button onClick={handleAddData}>Add Data</button>
+      <button onClick={handleUpdateData}>Update Data</button>
+      <button onClick={handleDeleteData}>Delete Data</button>
+    </div>
+  );
+};
+
+
+
+
 
 
