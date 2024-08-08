@@ -1,11 +1,11 @@
 {
   "name": "axios-swr-react",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A utility package for making HTTP requests with axios and SWR",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && javascript-obfuscator dist --output dist --config obfuscator.config.json",
+    "build": "tsc",
     "prepack": "npm run build"
   },
   "repository": {
@@ -22,23 +22,20 @@
   "author": "Prabhat Kumar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/prabhat081/axios-swr-react/issues"
+    "url": "https://github.com/prabhat081/axios-swr-reacte/issues"
   },
-  "homepage": "https://github.com/prabhat081/axios-swr-react#readme",
+  "homepage": "https://github.com/prabhat081axios-swr-react#readme",
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "swr": "^1.1.0"
   },
   "dependencies": {
     "axios": "^1.7.3",
-    "swr": "^1.1.0"
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
-    "javascript-obfuscator": "^4.1.1",
     "typescript": "^5.5.4"
   },
-  "files": [
-    "dist/**/*"
-  ]
+  "files": ["dist/**/*" ]
 }
