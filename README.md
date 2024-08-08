@@ -6,16 +6,17 @@ A utility package for making HTTP requests with axios and SWR.
 
 ```sh
 npm install axios-swr-react
+```
 
-import { useData, get, post, put, del } from 'axios-swr-react';
+## Usage
 
-// Usage examples in a React component
+### `useData` Hook
 
-useData Hook
-The useData hook is used to fetch data with SWR and axios. It provides data, isLoading, and isError states.
+The `useData` hook is used to fetch data with SWR and axios. It provides `data`, `isLoading`, and `isError` states.
 
+```jsx
 import React from 'react';
-import { useData } from 'your-package-name';
+import { useData } from 'axios-swr-react';
 
 const MyComponent = () => {
   const { data, isLoading, isError } = useData('/api/data');
@@ -30,14 +31,16 @@ const MyComponent = () => {
     </div>
   );
 };
+```
 
+### HTTP Methods
 
-HTTP Methods
-The package provides reusable functions for get, post, put, and delete HTTP methods.
+The package provides reusable functions for GET, POST, PUT, and DELETE HTTP methods.
 
-GET Request
+#### GET Request
 
-import { get } from 'your-package-name';
+```jsx
+import { get } from 'axios-swr-react';
 
 const fetchData = async () => {
   try {
@@ -47,10 +50,12 @@ const fetchData = async () => {
     console.error('Error fetching data', error);
   }
 };
+```
 
-POST Request
+#### POST Request
 
-import { post } from 'your-package-name';
+```jsx
+import { post } from 'axios-swr-react';
 
 const sendData = async () => {
   try {
@@ -61,42 +66,46 @@ const sendData = async () => {
     console.error('Error sending data', error);
   }
 };
+```
 
+#### PUT Request
 
-PUT Request
-
-import { put } from 'your-package-name';
+```jsx
+import { put } from 'axios-swr-react';
 
 const updateData = async () => {
   try {
     const data = { key: 'newValue' };
-    const response = await put('/api/data', data);
+    const response = await put('/api/data/1', data);
     console.log(response);
   } catch (error) {
     console.error('Error updating data', error);
   }
 };
+```
 
+#### DELETE Request
 
-DELETE Request
-
-import { del } from 'your-package-name';
+```jsx
+import { del } from 'axios-swr-react';
 
 const deleteData = async () => {
   try {
-    const response = await del('/api/data');
+    const response = await del('/api/data/1');
     console.log(response);
   } catch (error) {
     console.error('Error deleting data', error);
   }
 };
+```
 
+### Mutation Example
 
-Mutation Example
-You can use the mutate function from SWR to revalidate the data after making a POST, PUT, or DELETE request.
+You can use the `mutate` function from SWR to revalidate the data after making a POST, PUT, or DELETE request.
 
+```jsx
 import React from 'react';
-import { useData, post, put, del } from 'your-package-name';
+import { useData, post, put, del } from 'axios-swr-react';
 import { mutate } from 'swr';
 
 const MyComponent = () => {
@@ -104,18 +113,18 @@ const MyComponent = () => {
 
   const handleAddData = async () => {
     const newData = { key: 'value' };
-    await post('/api/data', newData, undefined, '/api/data');
+    await post('/api/data', newData);
     mutate('/api/data'); // Revalidate the data after the POST request
   };
 
   const handleUpdateData = async () => {
     const updatedData = { key: 'newValue' };
-    await put('/api/data/1', updatedData, undefined, '/api/data');
+    await put('/api/data/1', updatedData);
     mutate('/api/data'); // Revalidate the data after the PUT request
   };
 
   const handleDeleteData = async () => {
-    await del('/api/data/1', undefined, '/api/data');
+    await del('/api/data/1');
     mutate('/api/data'); // Revalidate the data after the DELETE request
   };
 
@@ -132,9 +141,8 @@ const MyComponent = () => {
     </div>
   );
 };
+```
 
+## License
 
-
-
-
-
+MIT
