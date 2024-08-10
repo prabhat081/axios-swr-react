@@ -13,7 +13,9 @@ const httpRequest = async (
 };
 
 // SWR fetcher using the utility function
-const fetcher = (url: string, config?: AxiosRequestConfig) => httpRequest('get', url, null, config);
+const fetcher = async (url: string, config?: AxiosRequestConfig) => {
+    return await httpRequest('get', url, null, config);
+};
 
 // useData hook using SWR and the fetcher
 export const useData = (url: string, config?: SWRConfiguration) => {
